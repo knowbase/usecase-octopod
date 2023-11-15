@@ -1,0 +1,51 @@
+name: "ENV SETUP"
+
+on:
+  push:
+    branches:
+      - deploy-env
+  pull_request:
+
+jobs:
+  terraform_env_setup:
+    name: "ENV Setup"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./env-setup/terraform
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+#      - name: Setup Terraform Backend
+#        id: backend
+#        run: |
+#          cat > backend.tf << EOF
+#          terraform {
+#            cloud {
+#              organization = "${{ secrets.TF_CLOUD_ORGANIZATION }}"
+#              workspaces {
+#                name = "${{ secrets.TF_CLOUD_WORKSPACE_BIGIP_BASE }}"
+#              }
+#            }
+#          }
+#          EOF
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+      
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/deploy-xc-bigip' && github.event_name == 'push'
+        env:
+          TF_VAR_encrypted_github_token: ${{ secrets.GITHUB_TOKEN }} 
+        run: terraform apply -auto-approve -input=false
