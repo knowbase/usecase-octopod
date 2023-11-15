@@ -8,6 +8,7 @@ on:
 
 jobs:
   terraform_env_setup:
+    permissions: write-all
     name: "ENV Setup"
     runs-on: ubuntu-latest
     defaults:
