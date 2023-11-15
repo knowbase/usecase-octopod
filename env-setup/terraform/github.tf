@@ -1,12 +1,10 @@
-resource "github_actions_variable" "xc-api-p12" {
+resource "github_actions_secret" "xc-api-p12" {
   repository       = "usecase-octopod"
-  variable_name    = "XC-API-P12"
-  value            = var.encrypted-xc-api-p12
+  secret_name    = "XC-API-P12"
 }
 resource "github_actions_secret" "tfe-api-token" {
   repository       = "usecase-octopod"
   secret_name      = "TF_API_TOKEN"
-  encrypted_value  = var.encrypted-tfe-api-token
 }
 resource "github_actions_variable" "tfe-env-workspace" {
   repository       = "usecase-octopod"

@@ -1,6 +1,6 @@
 
-encrypted-xc-api-p12 = "test"
-encrypted-tfe-api-token = "test"
+#encrypted-xc-api-p12 = "test"
+#encrypted-tfe-api-token = "test"
 tfe-env-workspace = "env"
 tfe-xc-workspace = "xc"
 tfe-infra-workspace = "aws-infra"
