@@ -8,7 +8,6 @@ on:
 
 jobs:
   terraform_env_setup:
-    permissions: write-all
     name: "ENV Setup"
     runs-on: ubuntu-latest
     defaults:
@@ -48,5 +47,5 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/deploy-env' && github.event_name == 'push'
         env:
-          TF_VAR_encrypted-github-token: ${{ secrets.GITHUB_TOKEN }} 
+          TF_VAR_encrypted-github-token: ${{ secrets.GH_PA }} 
         run: terraform apply -auto-approve -input=false
