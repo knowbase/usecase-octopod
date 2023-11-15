@@ -1,6 +1,6 @@
-variable "encrypted-github-token" {
+variable "email-addr" {
   type = string
-  default = "blah"
+  default = "blah@blah.com"
 }
 variable "encrypted-xc-api-p12" {
   type = string
@@ -27,4 +27,20 @@ variable "tfe-k8s-workspace" {
 variable "tfe-bigip-base-workspace" {
   type = string
   default = "bigip-base"
+}
+variable "tfe-org-name" {
+  type = string
+  default = "my-org-name"
+}
+variable "tfe-project-name" {
+  type = string
+  default = "my-project-name"
+}
+variable "tfe-project-variable-set" {
+  type = string
+  default = "my-variable-set"
+}
+variable "tfe-volt-api-p12-file" {
+  type = string
+  default = "api.p12"
 }
