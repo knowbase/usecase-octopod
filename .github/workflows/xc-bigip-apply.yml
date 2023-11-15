@@ -47,5 +47,5 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/deploy-env' && github.event_name == 'push'
         env:
-          TF_VAR_encrypted_github_token: ${{ secrets.GITHUB_TOKEN }} 
+          TF_VAR_encrypted-github-token: ${{ secrets.GITHUB_TOKEN }} 
         run: terraform apply -auto-approve -input=false
