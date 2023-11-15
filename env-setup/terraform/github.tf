@@ -1,6 +1,6 @@
 resource "github_actions_secret" "xc-api-p12" {
   repository       = "usecase-octopod"
-  secret_name    = "XC-API-P12"
+  secret_name    = "XC_API_P12"
 }
 resource "github_actions_secret" "tfe-api-token" {
   repository       = "usecase-octopod"
