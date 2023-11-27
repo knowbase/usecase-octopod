@@ -1,5 +1,6 @@
 variable "encrypted-github-token" {
   type = string
+  default = "blah"
 }
 variable "encrypted-xc-api-p12" {
   type = string
